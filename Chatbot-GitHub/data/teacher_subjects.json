@@ -1,0 +1,52 @@
+{
+  "info": {
+    "college": "วิทยาลัยเทคนิคสัตหีบ",
+    "semester": "1/2569",
+    "department": "เทคโนโลยีสารสนเทศ",
+    "teacher_name": "น.ส.มัลลิกา เรืองเดช",
+    "education": "ครุศาสตร์บัณฑิต",
+    "special_duty": "ผู้ช่วยหัวหน้างานสื่อการเรียนการสอน",
+    "total_weeks": 18,
+    "week_range": "สัปดาห์ที่ 1-18"
+  },
+  "subjects": [
+    {
+      "code": "21901-2010",
+      "name": "การสร้างภาพเคลื่อนไหวเบื้องต้น",
+      "theory_hr": 1,
+      "practice_hr": 4,
+      "credit": 3,
+      "total_hr_per_week": 18
+    },
+    {
+      "code": "21901-2009",
+      "name": "การสร้างเกมคอมพิวเตอร์",
+      "theory_hr": 1,
+      "practice_hr": 4,
+      "credit": 3,
+      "total_hr_per_week": 9
+    },
+    {
+      "code": "21909-2009",
+      "name": "การใช้งานแอปพลิเคชันปัญญาประดิษฐ์เบื้องต้น",
+      "theory_hr": 1,
+      "practice_hr": 3,
+      "credit": 2,
+      "total_hr_per_week": 4
+    },
+    {
+      "code": "20000-2001",
+      "name": "กิจกรรมลูกเสือวิสามัญ 1",
+      "theory_hr": 0,
+      "practice_hr": 2,
+      "credit": 0,
+      "total_hr_per_week": 2
+    }
+  ],
+  "totals": {
+    "theory_hr": 3,
+    "practice_hr": 13,
+    "credit": 8,
+    "total_hr_per_week": 33
+  }
+}

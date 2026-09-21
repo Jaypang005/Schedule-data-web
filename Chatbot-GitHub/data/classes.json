@@ -1,0 +1,103 @@
+{
+  "classes": [
+    {
+      "class": "สท.2/4",
+      "combined_class": false,
+      "combined_groups": [],
+      "schedule_refs": [
+        {"day": "จันทร์", "start_time": "08:00", "end_time": "12:00", "code": "21901-2010", "lesson_type": "ปฏิบัติ", "room": "com502", "student_count": 11}
+      ]
+    },
+    {
+      "class": "สท.2/3-4",
+      "combined_class": true,
+      "combined_groups": ["สท.2/3", "สท.2/4"],
+      "schedule_refs": [
+        {"day": "จันทร์", "start_time": "13:00", "end_time": "14:00", "code": "21901-2010", "lesson_type": "ทฤษฎี", "room": "com502", "student_count": 30}
+      ]
+    },
+    {
+      "class": "ทค.2/1-2",
+      "combined_class": false,
+      "combined_groups": [],
+      "schedule_refs": [
+        {"day": "จันทร์", "start_time": "16:00", "end_time": "17:00", "code": "21901-2009", "lesson_type": "ทฤษฎี", "room": "com502", "student_count": 42}
+      ]
+    },
+    {
+      "class": "ทค.2/1",
+      "combined_class": false,
+      "combined_groups": [],
+      "schedule_refs": [
+        {"day": "อังคาร", "start_time": "08:00", "end_time": "10:00", "code": "21901-2009", "lesson_type": "ปฏิบัติ", "room": "com502", "student_count": 21},
+        {"day": "พุธ", "start_time": "08:00", "end_time": "10:00", "code": "21901-2009", "lesson_type": "ปฏิบัติ", "room": "com502", "student_count": 21}
+      ]
+    },
+    {
+      "class": "ทค.2/2",
+      "combined_class": false,
+      "combined_groups": [],
+      "schedule_refs": [
+        {"day": "อังคาร", "start_time": "12:00", "end_time": "16:00", "code": "21901-2009", "lesson_type": "ปฏิบัติ", "room": "com502", "student_count": 21}
+      ]
+    },
+    {
+      "class": "สท.2/1",
+      "combined_class": false,
+      "combined_groups": [],
+      "schedule_refs": [
+        {"day": "พุธ", "start_time": "12:00", "end_time": "14:00", "code": "21901-2010", "lesson_type": "ปฏิบัติ", "room": "com502", "student_count": 20},
+        {"day": "ศุกร์", "start_time": "09:00", "end_time": "11:00", "code": "21901-2010", "lesson_type": "ปฏิบัติ", "room": "com502", "student_count": 20}
+      ]
+    },
+    {
+      "class": "สท.1/3-4",
+      "combined_class": false,
+      "combined_groups": [],
+      "schedule_refs": [
+        {"day": "พุธ", "start_time": "14:00", "end_time": "16:00", "code": "20000-2001", "lesson_type": "ปฏิบัติ", "room": "สนามลูกเสือเนตรนารี", "student_count": 40}
+      ]
+    },
+    {
+      "class": "สท.2/3",
+      "combined_class": false,
+      "combined_groups": [],
+      "schedule_refs": [
+        {"day": "พฤหัสฯ", "start_time": "08:00", "end_time": "12:00", "code": "21901-2010", "lesson_type": "ปฏิบัติ", "room": "com502", "student_count": 19}
+      ]
+    },
+    {
+      "class": "สท.2/2",
+      "combined_class": false,
+      "combined_groups": [],
+      "schedule_refs": [
+        {"day": "พฤหัสฯ", "start_time": "14:00", "end_time": "16:00", "code": "21901-2010", "lesson_type": "ปฏิบัติ", "room": "com502", "student_count": 19}
+      ]
+    },
+    {
+      "class": "สท.2/1-2",
+      "combined_class": false,
+      "combined_groups": [],
+      "schedule_refs": [
+        {"day": "ศุกร์", "start_time": "08:00", "end_time": "09:00", "code": "21901-2010", "lesson_type": "ทฤษฎี", "room": "com502", "student_count": 39}
+      ]
+    },
+    {
+      "class": "ทค.3/1-2",
+      "combined_class": false,
+      "combined_groups": [],
+      "schedule_refs": [
+        {"day": "ศุกร์", "start_time": "14:00", "end_time": "17:00", "code": "21909-2009", "lesson_type": "ปฏิบัติ", "room": "สถานประกอบการ", "student_count": 40},
+        {"day": "ศุกร์", "start_time": "17:00", "end_time": "18:00", "code": "21909-2009", "lesson_type": "ทฤษฎี", "room": "ออนไลน์", "student_count": 40, "type": "ออนไลน์"}
+      ]
+    }
+  ],
+  "combined_membership": {
+    "สท.2/3": [
+      {"combined_class": "สท.2/3-4", "day": "จันทร์", "start_time": "13:00", "end_time": "14:00", "code": "21901-2010", "lesson_type": "ทฤษฎี", "room": "com502"}
+    ],
+    "สท.2/4": [
+      {"combined_class": "สท.2/3-4", "day": "จันทร์", "start_time": "13:00", "end_time": "14:00", "code": "21901-2010", "lesson_type": "ทฤษฎี", "room": "com502"}
+    ]
+  }
+}
