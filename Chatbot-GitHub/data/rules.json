@@ -1,7 +1,7 @@
 {
   "source_policy": {
     "answer_only_from_schedule_data": true,
-    "out_of_scope_response": "ไม่เข้าใจคำถาม กรุณาตรวจสอบการสะกดวันหรือคำถาม แล้วพิมพ์ใหม่อีกครั้ง",
+    "out_of_scope_response": "ไม่เข้าใจคำถาม กรุณาตรวจสอบการสะกดวันหรือคำถาม แล้วพิมพ์ใหม่อีกครั้ง\nระบบรองรับการถามครั้งละ 1 คำถาม กรุณาถามทีละคำถาม",
     "do_not_guess": true
   },
   "student_count_policy": {

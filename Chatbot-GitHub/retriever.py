@@ -213,9 +213,14 @@ class ScheduleRetriever:
             )[:1]
         if parsed.get("_first_period"):
             rows = sorted(rows, key=lambda row: (row["start_time"], row["end_time"]))[:1]
+        # A schedule-looking word alone (for example "เรียน" or "คาบ") is not
+        # enough to return every row. Require a real filter, requested field, or
+        # a day that appears in genuine schedule language.
         recognized = bool(
-            parsed["day"] or parsed["time"] or parsed["period"] or parsed["class"]
+            (parsed["day"] and parsed["_schedule_language"])
+            or parsed["time"] or parsed["period"] or parsed["class"]
             or parsed["subject_code"] or parsed["room"] or parsed["asks"]
-            or parsed.get("time_of_day") or parsed["_schedule_language"]
+            or parsed.get("time_of_day")
+            or parsed.get("_next_period") or parsed.get("_first_period")
         )
         return {"kind": "schedule" if recognized else "not_found", "parsed": parsed, "rows": rows}

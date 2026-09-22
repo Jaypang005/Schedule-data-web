@@ -13,6 +13,10 @@ from normalizer import CLASS_RE, CODE_RE, DEFAULT_DATA_DIR, QuestionNormalizer
 
 TIME_RE = re.compile(r"(?<!\d)([0-2]\d:[0-5]\d)(?!\d)")
 OUT_OF_SCOPE_TOPIC_RE = re.compile(r"โรงอาหาร|อาหาร|ฝน|ค่าเทอม|ทุนการศึกษา|สอบ|รถรับส่ง|จันทบุรี|พระจันทร์|ดวงจันทร์|แสงจันทร์|พุดดิ้ง")
+NON_SCHEDULE_WORD_RE = re.compile(
+    r"โรงเรียน|นักเรียน|บทเรียน|การเรียนรู้|ค่าเล่าเรียน|ทุนเรียน|"
+    r"อยากเรียน|เรียนต่อ|เรียนภาษา|คาบสมุทร"
+)
 TIME_OF_DAY_TERMS = (
     ("กลางคืน", "night"), ("ค่ำ", "night"), ("เช้า", "morning"),
     ("เที่ยง", "noon"), ("บ่าย", "afternoon"), ("เย็น", "evening"),
@@ -169,8 +173,14 @@ class QuestionParser:
             if "นักเรียน" in text:
                 asks.append("student_count")
 
-        schedule_language = bool(re.search(r"(?<!โรง)เรียน", text)) or any(
-            term in text for term in ("สอน", "คาบ", "เวลา", "ห้อง", "กี่โมง", "วันไหน", "ที่ไหน")
+        # Words such as "นักเรียน", "โรงเรียน" and "คาบสมุทร" are not
+        # schedule intent by themselves. Remove those compounds before looking
+        # for schedule vocabulary so an unrelated sentence cannot expose the
+        # entire timetable.
+        schedule_probe = NON_SCHEDULE_WORD_RE.sub("", text)
+        schedule_language = bool(re.search(r"เรียน", schedule_probe)) or any(
+            term in schedule_probe
+            for term in ("สอน", "คาบ", "เวลา", "ห้อง", "กี่โมง", "วันไหน", "ที่ไหน")
         )
         subject_list = bool(
             re.search(r"(?:เรียน)?วิชาอะไรบ้าง|มีวิชาอะไรบ้าง|รายชื่อวิชา", text)
@@ -305,7 +315,9 @@ class QuestionParser:
     def _info_key(text: str) -> str | None:
         if any(term in text for term in ("ภาคเรียน", "เทอม")):
             return "semester"
-        if any(term in text for term in ("วิทยาลัยไหน", "วิทยาลัยอะไร", "สังกัดวิทยาลัย")):
+        if "มหาวิทยาลัย" not in text and any(
+            term in text for term in ("วิทยาลัยไหน", "วิทยาลัยอะไร", "สังกัดวิทยาลัย")
+        ):
             return "college"
         if any(term in text for term in ("วุฒิ", "การศึกษา")):
             return "education"

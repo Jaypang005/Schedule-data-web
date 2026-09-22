@@ -71,7 +71,7 @@
       "combined_class": false,
       "combined_groups": [],
       "schedule_refs": [
-        {"day": "พฤหัสฯ", "start_time": "14:00", "end_time": "16:00", "code": "21901-2010", "lesson_type": "ปฏิบัติ", "room": "com502", "student_count": 19}
+        {"day": "พฤหัสฯ", "start_time": "13:00", "end_time": "17:00", "code": "21901-2010", "lesson_type": "ปฏิบัติ", "room": "com502", "student_count": 19}
       ]
     },
     {

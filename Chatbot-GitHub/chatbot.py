@@ -94,6 +94,17 @@ class ScheduleChatbot:
         if not tokens:
             return False
         allowed = set(self.normalizer.day_aliases)
+        exact_day_following = DAY_FOLLOWING_TERMS + (
+            "ครับ", "ค่ะ", "คะ", "หน่อย", "บ้าง", "ไหม", "มั้ย",
+        )
+        # Thai is commonly typed without spaces (for example
+        # "เรียนอะไรวันอังคาร"). If an exact day alias occurs anywhere and is
+        # followed by a normal schedule/polite suffix, it is not a misspelling.
+        for alias in sorted(allowed, key=len, reverse=True):
+            for match in re.finditer(re.escape(alias), text):
+                remainder = text[match.end():]
+                if not remainder or remainder.startswith(exact_day_following):
+                    return False
         candidates = list(dict.fromkeys((tokens[0], tokens[-1])))
         for token in candidates:
             candidate = token[3:] if token.startswith("วัน") else token
