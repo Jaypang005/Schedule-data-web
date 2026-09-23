@@ -11,6 +11,8 @@ from chatbot import ScheduleChatbot
 
 
 app = Flask(__name__)
+BOT_NAME = "ฟ้าใส"
+IDENTITY_QUESTIONS = {"คุณคือใคร", "เธอคือใคร", "ฟ้าใสคือใคร", "ชื่ออะไร", "ชื่ออะไรคะ", "ชื่ออะไรครับ"}
 
 # The schedule data is immutable while the process is running, so one chatbot
 # instance can safely serve every request without repeatedly loading JSON files.
@@ -47,8 +49,20 @@ def chat():
         return jsonify({"error": "message is required"}), 400
 
     try:
-        # app.py contains no answer logic. Every reply comes from chatbot.py.
-        response = chatbot.response(message)
+        identity_text = "".join(message.split()).rstrip("?!？.。")
+        if identity_text in IDENTITY_QUESTIONS:
+            response = {
+                "reply": "ฟ้าใส ระบบตอบคำถามตารางเชิงวิเคราะห์ค่ะ",
+                "schedule_cards": [],
+            }
+        else:
+            response = chatbot.response(message)
+        reply = response.get("reply") if isinstance(response, dict) else None
+        if isinstance(reply, str):
+            reply = reply.replace("นะครับ", "นะคะ").replace("ครับ", "ค่ะ")
+            if not reply.startswith(f"{BOT_NAME}ตอบ:"):
+                reply = f"{BOT_NAME}ตอบ: {reply}"
+            response["reply"] = reply
     except Exception:
         app.logger.exception("Schedule chatbot failed")
         return jsonify({"error": "internal server error"}), 500
